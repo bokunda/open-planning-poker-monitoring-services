@@ -24,6 +24,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            ls -la
             cd /home/${{ secrets.SSH_USER }}/opp-metrics
-            ls -la
+            docker compose pull
+            docker compose up -d --remove-orphans
+            docker system prune -f
